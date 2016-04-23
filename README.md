@@ -1,14 +1,14 @@
 
 
-# Floadway
+# Floodway
 
-Floadway is the result of several years of back-end work done by me, it is the solution to some of the things that have always bothered me while writing software.
+Floodway is the result of several years of back-end work done by me, it is the solution to some of the things that have always bothered me while writing software.
 The concept repository holds the basic structure and explaination to the framework. That said, let's get started.
 
 
-## What is floadway supposed to be?
+## What is Floodway supposed to be?
 
-Floadway is an architecture building up on node.js (for now; framework should be implementable in other languages) that is supposed to: 
+Floodway is an architecture building up on node.js (for now; framework should be implementable in other languages) that is supposed to: 
 
 * Speed up developement of **Real-Time** applications
 * Remove **boilerplate** code from Applications
@@ -19,9 +19,9 @@ Achieving these goals is not really easy to do, this is the reason why all the t
 
 ## General structure
 
-Floadway is supposed to be scalable right from the start. Scaling can be a pain and time-consuming, therefore it is floadway's goal to automatically do most of the work for you.
+Floodway is supposed to be scalable right from the start. Scaling can be a pain and time-consuming, therefore it is Floodway's goal to automatically do most of the work for you.
 
-Floadway is split up into multiple servers. 
+Floodway is split up into multiple servers. 
 
 * Interface Servers 
   * Handle connections on the several Interfaces (HTTP,Websockets,GCM,TCP etc.)
@@ -50,7 +50,7 @@ This architecture has multiple benefits.
 
 ## Setup 
 
-The setup of Floadway is supposed to be as easy as possbile. That's why it will ship with a CLI that sets up everything on its own
+The setup of Floodway is supposed to be as easy as possbile. That's why it will ship with a CLI that sets up everything on its own
 
 The CLI will then start an instance of the specified type, and make sure it's kept running. 
 
@@ -62,7 +62,7 @@ This aspect is handled via WebSocket connections, as they have low overhead, are
 
 ## Developement 
 
-The goal of Floadway is to simplify the coding experience. The core idea is that each interface can follow a uniform request scheme:
+The goal of Floodway is to simplify the coding experience. The core idea is that each interface can follow a uniform request scheme:
 
 **Request**
 
@@ -95,7 +95,7 @@ Are essentially endpoints. They are defined in the application code running on t
 ```js
   // Declaring a namespace and some actions
   
-  floadway.registerNamespace({
+  floodway.registerNamespace({
     name: "user" // Has to be unique
     
     middleware: {
@@ -114,7 +114,7 @@ Are essentially endpoints. They are defined in the application code running on t
         middleware: ["doSomethingFancy"]
         description: "A method description is required. This might be a pain, but it is great to have good documentation",
         possibleErrors: ["wrongCredentials","internalError","accountNotActivated"] // Errors have to be defined here to ensure proper documentation and easier integration on the front-end
-        params: { // Validation follows the validation spec of the Floadway validator. The params object is of type "object" with mode set to "strict"
+        params: { // Validation follows the validation spec of the Floodway validator. The params object is of type "object" with mode set to "strict"
           username: { type: "string", minLength: 4, trim: true, maxLength: 32 },
           password: { type: "string", minLength: 6, trim: true, maxLength: 64 },
           rememberMe: { type: "boolean", default: false } // Defaults to false if not processable
@@ -128,7 +128,7 @@ Are essentially endpoints. They are defined in the application code running on t
   })
   
 ```
-Floadway has a custom validator built in. You can find more information about it in the validator repository. It can validate json trees recursively and also perform some actions on the data. It also has support for custom validaton functions.
+Floodway has a custom validator built in. You can find more information about it in the validator repository. It can validate json trees recursively and also perform some actions on the data. It also has support for custom validaton functions.
 
 Before an action is ran the validator checks the provided parameters to make sure they match the specified spec. 
 
